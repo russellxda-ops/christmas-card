@@ -273,7 +273,7 @@
       transform: rotateX(176deg);
     }
 
-    .leaf-front, .leaf-back {
+        .leaf-front, .leaf-back {
       position: absolute;
       inset: 0;
       backface-visibility: hidden;
@@ -285,6 +285,7 @@
 
     .leaf-front {
       background: #9e2229;
+      transform: translateZ(1px);
     }
 
     .leaf-front img {
@@ -294,10 +295,10 @@
       display: block;
     }
 
-    /* INSIDE TOP PAGE (PHOTO) — Warm cardstock gradient & crease shadow */
+    /* INSIDE TOP PAGE (PHOTO) */
     .leaf-back {
       background: linear-gradient(0deg, #f2ead9 0%, #fcf9f2 25%, #f7f1e3 100%);
-      transform: rotateX(180deg);
+      transform: rotateX(180deg) translateZ(1px);
       border-radius: 12px 12px 4px 4px;
       padding: calc(var(--card-h) * 0.045);
       display: flex;
@@ -314,7 +315,7 @@
       border-radius: 8px;
     }
 
-/* Magnifying glass button on front cover */
+    /* Magnifying glass button on front cover */
     .zoom-btn {
       position: absolute;
       bottom: 10px;
@@ -330,9 +331,17 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 10;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: opacity 0.25s ease;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
     }
+
+    .card-book.opened .zoom-btn {
+      opacity: 0;
+      pointer-events: none;
+    }
+
 
     /* Full-screen cover lightbox */
     .zoom-modal {
@@ -420,7 +429,6 @@
                      <div class="leaf-front">
             <img src="cover.jpg" alt="Card Front" />
             <button class="zoom-btn" id="zoomBtn" aria-label="View cover full screen">🔍</button>
-          </div>
           </div>
           <div class="leaf-back">
             <img src="inside-photo.jpg" alt="Family Photo" />
