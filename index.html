@@ -466,7 +466,17 @@ cardBook.classList.remove('opened');
 hintText.textContent = 'Tap the card to open';
 }
 });
+    const zoomBtn = document.getElementById('zoomBtn');
+    const zoomModal = document.getElementById('zoomModal');
 
+    zoomBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevents flipping the card when tapping the magnifier
+      zoomModal.classList.add('active');
+    });
+
+    zoomModal.addEventListener('click', () => {
+      zoomModal.classList.remove('active');
+    });
   </script>
 </body>
 </html>
