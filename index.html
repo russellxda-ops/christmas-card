@@ -378,44 +378,32 @@
       color: #f4e4c1;
     }
 		    /* ================= SUMMER CHRISTMAS FIREFLIES ================= */
-    .fireflies {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
     .firefly {
       position: absolute;
       bottom: -20px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 236, 168, 0.95) 0%, rgba(245, 198, 84, 0.4) 55%, transparent 100%);
-      box-shadow: 0 0 10px rgba(255, 224, 130, 0.6);
+      background: radial-gradient(circle, rgba(255, 240, 175, 0.95) 0%, rgba(245, 198, 84, 0.45) 60%, transparent 100%);
+      box-shadow: 0 0 12px rgba(255, 224, 130, 0.75);
       animation: floatUp linear infinite, twinkle ease-in-out infinite alternate;
     }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
+        transform: translateY(0) translateX(0) scale(0.85);
       }
-      15% {
-        opacity: 0.85;
-      }
-      85% {
-        opacity: 0.75;
+      50% {
+        transform: translateY(-55vh) translateX(18px) scale(1.15);
       }
       100% {
-        transform: translateY(-108vh) translateX(25px);
-        opacity: 0;
+        transform: translateY(-112vh) translateX(-12px) scale(0.9);
       }
     }
 
     @keyframes twinkle {
-      0% { transform: scale(0.8); }
-      100% { transform: scale(1.25); }
+      0% { opacity: 0.25; }
+      100% { opacity: 0.95; }
     }
+
 
   </style>
 
@@ -537,7 +525,8 @@ hintText.textContent = 'Tap the card to open';
       dot.style.height = `${size}px`;
       dot.style.left = `${Math.random() * 100}vw`;
       dot.style.animationDuration = `${Math.random() * 8 + 9}s, ${Math.random() * 2 + 1.5}s`;
-      dot.style.animationDelay = `${Math.random() * 10}s, 0s`;
+      dot.style.animationDelay = `-${Math.random() * 12}s, -${Math.random() * 2}s`;
+
       fireflyContainer.appendChild(dot);
     }
 
